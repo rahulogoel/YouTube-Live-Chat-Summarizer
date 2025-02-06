@@ -1,0 +1,33 @@
+{
+    "manifest_version": 3,
+    "name": "YouTube Chat Summarizer",
+    "version": "1.0",
+    "description": "Summarizes live chat messages during YouTube streams.",
+    "permissions": [
+      "scripting",
+      "activeTab",
+      "webNavigation"
+    ],
+    "host_permissions": [
+      "http://localhost:8000/*"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://www.youtube.com/*"],
+        "js": ["content.js"]
+      }
+    ],
+    "web_accessible_resources": [
+      {
+        "resources": ["content.js"],
+        "matches": ["https://www.youtube.com/*"]
+      }
+    ],
+    "action": {
+      "default_popup": "popup.html"
+    }
+  }
+  
